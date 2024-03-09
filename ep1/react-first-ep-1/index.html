@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./index.css">
+	<title>NMS R</title>
+</head>
+<body>
+	<p>Hello from before root</p>
+	<div id="root">
+		<h1>tesing here</h1>
+	</div>
+	<p>Hello from after root</p>
+	<div id="root1"></div>
+	
+	<!--simple program using javascript-->
+	<script>
+		const heading1 = document.createElement("h1");
+		heading1.innerHTML = "Hello from js!!!!!!!";
+		const root1 = document.getElementById("root1");
+		root1.appendChild(heading1);
+	
+	</script>
+		
+	<!--import react in our project-->
+	<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+	<!--simple program using react-->
+	<script src="./App.js"></script>
+</body>
+</html>

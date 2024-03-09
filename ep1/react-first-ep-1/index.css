@@ -1,0 +1,10 @@
+#custom-heading {
+	color: red;
+	font-size: 21px;
+}
+.child {
+	background-color: aquamarine;
+}
+.child1 {
+	background-color: aqua;
+}
