@@ -1,0 +1,19 @@
+npm
+ - not node package manager
+ - manages all packages, contain repo for all packages
+ - package.json is configuration for packages in npm
+
+- dependancy package : parcel - ignite app
+- dependancy types : dev (dependancy in developmet) and normal (dependancy in production)
+
+- npm install -D parcel (-D -> dev dependancy)
+
+version 1.2.3 (major.minor.patch(bug fixes))
+- caret (^) -> consider update minor and patch versio automatically which is compatible with 
+our version but not major version as it can break functionality 1.2.2->1.2.4
+- tilde (~) ->  consider update any version for patch and major versio automatically to bug
+ fixex like 1.2.3 -> 1.2.3
+
+
+Config Driven UI : Whatever the condition coming from backend, UI will change.
+- based on the location the UI(color, bg) will change.
