@@ -17,3 +17,10 @@ our version but not major version as it can break functionality 1.2.2->1.2.4
 
 Config Driven UI : Whatever the condition coming from backend, UI will change.
 - based on the location the UI(color, bg) will change.
+
+## why To give key={id} in map function ? (for optimization, uniquely identity each loop item)
+-by key, every card is unique
+- when add new one, react doesn't re-render all card, just add new one at its specific id
+- if don't have key,all card is same and re-render all if any chnage happed.
+- reactDoc said, don't use indes as key(if api do't have id then we can use)
+- because create problem in sorting of card when new item id added reatc get confused

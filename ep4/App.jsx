@@ -25,7 +25,6 @@ const App = () => {
       <Search />
       <Card />
       {/* <img src="https://wellnessacademyusa.com/wp-content/uploads/2023/12/san-diago-hone.png" /> */}
-      <p>tetsiomg</p>
     </div>
   );
 };

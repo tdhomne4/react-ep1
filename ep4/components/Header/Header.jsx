@@ -19,7 +19,6 @@ const Header = (props) => {
     /* Method that will fix header after a specific scrollable */
     const scrollTop = window.scrollY;
     const stickyClass = scrollTop >= 250 ? "is-sticky" : "";
-    console.log(stickyClass);
     setSticky(stickyClass);
   };
 

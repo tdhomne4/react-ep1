@@ -1,0 +1,9 @@
+# Ignore temporary files
+*.tmp
+*.bak
+
+# Ignore build artifacts
+build/
+dist/
+.parcel-cache/
+node_modules/

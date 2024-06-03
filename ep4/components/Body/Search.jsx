@@ -3,9 +3,9 @@ import './Search.scss';
  const Search = () => {
 	return (
 		<div className='search-container'>
-			<div class="search-bar">
-				<input type="text" placeholder="Search Here..." class="search-input" />
-				<button class="search-btn">Search</button>
+			<div className="search-bar">
+				<input type="text" placeholder="Search Here..." className="search-input" />
+				<button className="search-btn">Search</button>
 			</div>
 		</div>
 		

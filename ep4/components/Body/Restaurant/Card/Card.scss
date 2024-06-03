@@ -30,11 +30,15 @@
       color: #333;
       line-height: 1.5;
     }
+    .food-card-image {
+      width: auto;
+      max-height: 400px;
+      height: 100%;
+    }
     .food-card-info {
       padding: 20px;
       p{
           font-size: 22px;
-          text-align: center;
           font-weight: 600;
           margin-bottom: 10px;
         &:hover{
@@ -47,18 +51,30 @@
         }
       .rating-sec{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         margin-top: 15px;
+        margin-bottom: 10px;
         .card-ratings{
           color: green;
-          font-size: 25px;
+          font-size: 17px;
           font-weight: bold;
-          letter-spacing: 3.3px;
         }
         .card-time {
           font-size: 13px;
           font-weight: 400;
           color: #737171;
+          line-height: 1.4;
+        }
+      }
+      .res-address {
+        font-size: 15px;
+        color: #43434a;
+        font-weight: 500;
+      }
+      .card-cost{
+        font-size: 16px;
+        &:hover{
+          color:#605959;
         }
       }
     }
