@@ -1,13 +1,18 @@
 import React from 'react'
 import './Card.scss';
-import resData from '../../../../resData.json';
+import resData from '../../../../utils/mocData';
+import { CDN_URL } from '../../../../utils/constants';
 const Card = () => {
 
 	return (
+		<>
+		<div className='top-rated-sec'>
+			<button className='top-rated-btn'>Top Rated Restaurants</button>
+		</div>
 		<div className='card-container'>
 			{resData.map(({info:restaurant},index) => (
 				<div className="food-card" key={restaurant.id}>
-					{index !== 1 && restaurant.cloudinaryImageId && <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
+					{index !== 1 && restaurant.cloudinaryImageId && <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
 						 <div className="food-card-info">
 							 <p>{restaurant.name}</p>
 							 <p className='card-cuisines'>— {restaurant.cuisines.join(", ")}</p>
@@ -20,11 +25,11 @@ const Card = () => {
 								<span>{restaurant.areaName}</span>
 							 </div>
 						 </div>
-						 {index === 1 && restaurant.cloudinaryImageId && <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
+						 {index === 1 && restaurant.cloudinaryImageId && <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
 				 </div>
 			))}
-			
 		</div>
+		</>
 	)
 }
 export default Card;

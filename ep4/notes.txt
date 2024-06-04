@@ -14,9 +14,11 @@ our version but not major version as it can break functionality 1.2.2->1.2.4
 - tilde (~) ->  consider update any version for patch and major versio automatically to bug
  fixex like 1.2.3 -> 1.2.3
 
-
+========================================================================================
 Config Driven UI : Whatever the condition coming from backend, UI will change.
 - based on the location the UI(color, bg) will change.
+
+========================================================================================
 
 ## why To give key={id} in map function ? (for optimization, uniquely identity each loop item)
 -by key, every card is unique
@@ -24,3 +26,12 @@ Config Driven UI : Whatever the condition coming from backend, UI will change.
 - if don't have key,all card is same and re-render all if any chnage happed.
 - reactDoc said, don't use indes as key(if api do't have id then we can use)
 - because create problem in sorting of card when new item id added reatc get confused
+
+========================================================================================
+- Default Export/Import
+export default Compenent; - file is exporting by default only one
+import Component from "path";
+
+-Named Export/Import
+export const name (named export) - to export multiple items from the file.
+import {name} from "path";

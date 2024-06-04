@@ -30,3 +30,20 @@
 #command 
 - npm run start/npm start
 - npm run build
+
+##Food App
+/**
+ * Header
+ *  - Logo
+ *  - NavItems
+ * Body
+ *  - Search
+ *  - RestaurantContainer
+ *    - ReataurantCard
+ *      - Top Rated Reataurants (avg rating > 4)
+ * Footer
+ *  - Logo
+ *  - Links
+ *  - Copyright
+ *  - Contact
+ */

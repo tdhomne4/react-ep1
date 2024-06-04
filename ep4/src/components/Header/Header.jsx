@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import HeaderLogo from "../../assets/images/Eatance_Logo.png";
+import Logo from "../../../public/assets/images/Eatance_Logo.png";
 import "./Header.scss";
 const Header = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +27,7 @@ const Header = (props) => {
       <div className="header-container">
         <div className="logo-container">
           <a href="/">
-            <img className="h-logo" src={HeaderLogo} alt="Eatance_Logo" />
+            <img className="h-logo" src={Logo} alt="Eatance_Logo" />
           </a>
         </div>
         <div className="nav-container">

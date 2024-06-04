@@ -1,3 +1,19 @@
+.top-rated-sec {
+	margin: 50px 0px;
+  .top-rated-btn {
+    color: #fff;
+    background: #1f952b;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: #1f952b;
+    &:hover{
+      box-shadow: 1px 1px #000;
+    }
+  }
+}
 .card-container{
 	 display: flex;
   justify-content: space-around;
