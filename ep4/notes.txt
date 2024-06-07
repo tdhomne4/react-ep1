@@ -35,3 +35,13 @@ import Component from "path";
 -Named Export/Import
 export const name (named export) - to export multiple items from the file.
 import {name} from "path";
+========================================================================================
+
+##React Hooks
+- Normal JS function
+**useState -> 
+- react funtion
+- to update variable data  
+-> [JSVariable, modifyJsVariable] = useState(default value);
+========================================================================================
+##render- whenever state variable update, react re-render the Component

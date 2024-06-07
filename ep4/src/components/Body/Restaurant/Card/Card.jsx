@@ -1,18 +1,24 @@
-import React from 'react'
+import React , {useState} from 'react'
 import './Card.scss';
-import resData from '../../../../utils/mocData';
+import resData from '../../../../utils/resData';
 import { CDN_URL } from '../../../../utils/constants';
 const Card = () => {
-
+	const [listOfRes, setListOfRes] = useState(resData);
 	return (
 		<>
 		<div className='top-rated-sec'>
-			<button className='top-rated-btn'>Top Rated Restaurants</button>
+			<button className='top-rated-btn' onClick={() => {
+				const filterResData = listOfRes.filter((res) => 
+					res.info.avgRating > 4
+				)
+				setListOfRes(filterResData);
+				console.log(filterResData);
+			}}>Top Rated Restaurants</button>
 		</div>
 		<div className='card-container'>
-			{resData.map(({info:restaurant},index) => (
+			{listOfRes?.map(({info:restaurant},index) => (
 				<div className="food-card" key={restaurant.id}>
-					{index !== 1 && restaurant.cloudinaryImageId && <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
+					{restaurant.cloudinaryImageId ? <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" /> : ""}
 						 <div className="food-card-info">
 							 <p>{restaurant.name}</p>
 							 <p className='card-cuisines'>— {restaurant.cuisines.join(", ")}</p>
@@ -25,7 +31,6 @@ const Card = () => {
 								<span>{restaurant.areaName}</span>
 							 </div>
 						 </div>
-						 {index === 1 && restaurant.cloudinaryImageId && <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" />}
 				 </div>
 			))}
 		</div>
