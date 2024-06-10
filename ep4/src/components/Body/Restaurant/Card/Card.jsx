@@ -1,9 +1,26 @@
-import React , {useState} from 'react'
+import React , {useState,useEffect} from 'react'
 import './Card.scss';
-import resData from '../../../../utils/resData';
 import { CDN_URL } from '../../../../utils/constants';
+import Loader from "../../../Laoder/Loader"
 const Card = () => {
-	const [listOfRes, setListOfRes] = useState(resData);
+	const [listOfRes, setListOfRes] = useState([]);
+
+	useEffect(() => {
+		console.log("useeffect called");
+		fetchResData();
+	},[]);
+
+	const fetchResData = async () => {
+		const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+		);
+		const jsonData = await data.json();
+		//optional chaining
+		console.log(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+		setListOfRes(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+	}
+	if(listOfRes.length === 0 ){
+		return <Loader />
+	}
 	return (
 		<>
 		<div className='top-rated-sec'>
@@ -12,7 +29,6 @@ const Card = () => {
 					res.info.avgRating > 4
 				)
 				setListOfRes(filterResData);
-				console.log(filterResData);
 			}}>Top Rated Restaurants</button>
 		</div>
 		<div className='card-container'>

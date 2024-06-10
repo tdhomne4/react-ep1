@@ -28,7 +28,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 20px;
-    max-width: 350px;
+    // max-width: 350px;
+    flex : 0 0 29.33%;
     text-align: left;
     font-family: Arial, sans-serif;
     transition: filter 0.3s ease; 
@@ -47,9 +48,11 @@
       line-height: 1.5;
     }
     .food-card-image {
-      width: auto;
-      max-height: 400px;
       height: 100%;
+      max-height: 330px;
+      max-width: 100%;
+      width: 100%;
+      object-fit: fill;
     }
     .food-card-info {
       padding: 20px;

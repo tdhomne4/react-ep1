@@ -38,10 +38,39 @@ import {name} from "path";
 ========================================================================================
 
 ##React Hooks
-- Normal JS function
+- Normal JS function which give some utility
 **useState -> 
 - react funtion
 - to update variable data  
 -> [JSVariable, modifyJsVariable] = useState(default value);
+- react keep track of state variable, when change, it triggered the Diff algo and re-render Component
 ========================================================================================
 ##render- whenever state variable update, react re-render the Component
+	-	keep data layer in sync with UI layer
+
+========================================================================================
+##Virtual DOM -> representation of actual DOM(HTML Tags) ->ITs object
+========================================================================================
+#Reconciliation Algorithm (React Fiber-> in React 16) -> DOM Update https://github.com/acdlite/react-fiber-architecture?tab=readme-ov-file
+#Diff Algorithm -> 
+	-	Calculate difference between Old virtual DOM and new vitual DOM after update is done,
+	- then it update the actual DOM on every render cycle.
+
+========================================================================================
+#Monolith architecture : 
+- all services in one app(DB,API,UI,Authentication code)
+- all code written in one language
+#Microservice architecture (Single Responsibility Principle) (Seperation of Concerns): 
+- all services in seperate app (DB, UI, API)
+- all services are run on different port and its connected to url/api or url/backend
+- we can write Microservice in different language
+
+========================================================================================
+#useEffect(Callback function, dependancy array);
+- Callback function call after Component render;
+- first body renderes, then useEffect called
+========================================================================================
+##Loader 
+- loader is not good
+- Shimmer UI 
+- A better way to show loading states is to use a shimmer UI. A shimmer UI is a version of the UI that doesn’t contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
