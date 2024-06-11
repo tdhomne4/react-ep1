@@ -44,6 +44,8 @@ import {name} from "path";
 - to update variable data  
 -> [JSVariable, modifyJsVariable] = useState(default value);
 - react keep track of state variable, when change, it triggered the Diff algo and re-render Component
+-> why use state ? by using normal js variable we can update variable value but UI doesn’t update, to update UI when variable
+change, we need state
 ========================================================================================
 ##render- whenever state variable update, react re-render the Component
 	-	keep data layer in sync with UI layer
@@ -74,3 +76,8 @@ import {name} from "path";
 - loader is not good
 - Shimmer UI 
 - A better way to show loading states is to use a shimmer UI. A shimmer UI is a version of the UI that doesn’t contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
+========================================================================================
+#why we can change const variable in useState?
+
+- useState, change the state of variable internally, each render have its internal state and re-render the Component.
+- it create new state with new instance of const variable and re-render Component with new state value.

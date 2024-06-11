@@ -2,12 +2,14 @@ import React , {useState,useEffect} from 'react'
 import './Card.scss';
 import { CDN_URL } from '../../../../utils/constants';
 import Loader from "../../../Laoder/Loader"
+import Shimmer from '../../../Shimmer/Shimmer';
 const Card = () => {
 	const [listOfRes, setListOfRes] = useState([]);
-
+	const [filterBtnName, setFilterBtnName] = useState("Top Rated Restaurants");
 	useEffect(() => {
 		console.log("useeffect called");
 		fetchResData();
+		console.log(filterBtnName);
 	},[]);
 
 	const fetchResData = async () => {
@@ -18,18 +20,25 @@ const Card = () => {
 		console.log(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 		setListOfRes(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 	}
-	if(listOfRes.length === 0 ){
-		return <Loader />
-	}
-	return (
+	//conditional rendering
+	return listOfRes.length === 0 ? <Shimmer /> : (
 		<>
 		<div className='top-rated-sec'>
-			<button className='top-rated-btn' onClick={() => {
-				const filterResData = listOfRes.filter((res) => 
-					res.info.avgRating > 4
-				)
-				setListOfRes(filterResData);
-			}}>Top Rated Restaurants</button>
+				{filterBtnName === "Top Rated Restaurants" ? 
+					<button className='top-rated-btn' onClick={() => {
+						const filterResData = listOfRes.filter((res) => 
+							res.info.avgRating > 4
+						)
+						setListOfRes(filterResData);
+						setFilterBtnName("Reset Restaurants");
+					}}>{filterBtnName}</button>
+					 : 
+					<button className='reset-res-btn' onClick={() => {
+						fetchResData();
+						setFilterBtnName("Top Rated Restaurants");
+					}}>
+						{filterBtnName}
+				</button>}
 		</div>
 		<div className='card-container'>
 			{listOfRes?.map(({info:restaurant},index) => (

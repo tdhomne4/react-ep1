@@ -1,5 +1,7 @@
 .top-rated-sec {
 	margin: 50px 0px;
+  display: flex;
+  justify-content: space-between;
   .top-rated-btn {
     color: #fff;
     background: #1f952b;
@@ -9,6 +11,19 @@
     padding: 10px 20px;
     border-radius: 10px;
     border-color: #1f952b;
+    &:hover{
+      box-shadow: 1px 1px #000;
+    }
+  }
+  .reset-res-btn{
+    color: #fff;
+    background: #000000;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: #000000;
     &:hover{
       box-shadow: 1px 1px #000;
     }
