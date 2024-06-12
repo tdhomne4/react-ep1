@@ -1,11 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Search from './Search/Search';
 import Card from './Restaurant/Card/Card';
 const Body = () => {
+	
+	const [searchResInput, setSearchResInput] = useState("");
+
+	const handleSearchInput = (input) => {
+		setSearchResInput(input);
+	}
 	return (
 		<>
-			<Search />
-			<Card />
+			<Search onSearchHandler={handleSearchInput}/>
+			<Card searchResInput={searchResInput}/>
 		</>
 	)
 }

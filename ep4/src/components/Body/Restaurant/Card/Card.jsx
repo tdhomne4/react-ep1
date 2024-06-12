@@ -1,27 +1,39 @@
 import React , {useState,useEffect} from 'react'
 import './Card.scss';
 import { CDN_URL } from '../../../../utils/constants';
-import Loader from "../../../Laoder/Loader"
+// import Loader from "../../../Laoder/Loader"
 import Shimmer from '../../../Shimmer/Shimmer';
-const Card = () => {
+
+const Card = ({searchResInput}) => {
+
 	const [listOfRes, setListOfRes] = useState([]);
+	const [filterResData, setFilterResData] = useState([]);
 	const [filterBtnName, setFilterBtnName] = useState("Top Rated Restaurants");
+
 	useEffect(() => {
-		console.log("useeffect called");
 		fetchResData();
-		console.log(filterBtnName);
 	},[]);
 
+	useEffect(() => {
+		fetchSearchResData();
+	},[searchResInput]);
+
+	const fetchSearchResData = () => {
+		const searchResData = listOfRes.filter((res) => 
+			res.info.name.toLowerCase().includes(searchResInput.toLowerCase())
+		)
+		setFilterResData(searchResData);
+	}
 	const fetchResData = async () => {
 		const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 		);
 		const jsonData = await data.json();
 		//optional chaining
-		console.log(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 		setListOfRes(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+		setFilterResData(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 	}
 	//conditional rendering
-	return listOfRes.length === 0 ? <Shimmer /> : (
+	return filterResData.length === 0 ? <Shimmer /> : (
 		<>
 		<div className='top-rated-sec'>
 				{filterBtnName === "Top Rated Restaurants" ? 
@@ -29,7 +41,7 @@ const Card = () => {
 						const filterResData = listOfRes.filter((res) => 
 							res.info.avgRating > 4
 						)
-						setListOfRes(filterResData);
+						setFilterResData(filterResData);
 						setFilterBtnName("Reset Restaurants");
 					}}>{filterBtnName}</button>
 					 : 
@@ -41,7 +53,7 @@ const Card = () => {
 				</button>}
 		</div>
 		<div className='card-container'>
-			{listOfRes?.map(({info:restaurant},index) => (
+			{filterResData?.map(({info:restaurant},index) => (
 				<div className="food-card" key={restaurant.id}>
 					{restaurant.cloudinaryImageId ? <img src={CDN_URL+restaurant.cloudinaryImageId} alt={restaurant.name} className="food-card-image" /> : ""}
 						 <div className="food-card-info">

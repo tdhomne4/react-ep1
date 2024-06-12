@@ -80,4 +80,5 @@ change, we need state
 #why we can change const variable in useState?
 
 - useState, change the state of variable internally, each render have its internal state and re-render the Component.
-- it create new state with new instance of const variable and re-render Component with new state value.
+- it create new state with new instance of const variable and trigger reconciliation cycle and re-render Component with new state value.
+- Thats why DOM manipulation is very fast by react
