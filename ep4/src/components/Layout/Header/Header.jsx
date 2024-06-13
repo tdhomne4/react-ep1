@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
-import Logo from "../../../public/assets/images/Eatance_Logo.png";
-import "./Header.scss";
+import { Link } from "react-router-dom";
+import Logo from "../../../../public/assets/images/Eatance_Logo.png";
+import style from './style.module.scss';
 const Header = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sticky, setSticky] = useState("");
@@ -24,35 +25,35 @@ const Header = (props) => {
 
   return (
     <div className={`header ${sticky}`}>
-      <div className="header-container">
-        <div className="logo-container">
+      <div className={`header_container ${style.header_container} `}>
+        <div className="header_container_logo">
           <a href="/">
-            <img className="h-logo" src={Logo} alt="Eatance_Logo" />
+            <img className="header_container_logo_img" src={Logo} alt="Eatance_Logo" />
           </a>
         </div>
-        <div className="nav-container">
+        <div className="header_container_nav">
           {isMenuOpen ? (
-            <a className="close-menu" onClick={toggleMenu}>
+            <a className="header_container_nav_close_menu" onClick={toggleMenu}>
               ×
             </a>
           ) : (
-            <button className="menu-toggle" onClick={toggleMenu}>
+            <button className="header_container_nav_menu_toggle" onClick={toggleMenu}>
               ☰
             </button>
           )}
-          <div className={`nav-items ${isMenuOpen ? "open" : ""}`}>
+          <div className={`header_container_nav_items ${isMenuOpen ? "open" : ""}`}>
             <ul>
               <li>
-                <a href="">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="">About Us</a>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <a href="">Contact Us</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
               <li>
-                <a href="">Products</a>
+                <Link to="/products">Products</Link>
               </li>
             </ul>
           </div>

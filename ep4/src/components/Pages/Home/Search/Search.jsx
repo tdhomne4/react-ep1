@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import './Search.scss';
 
 const Search = ({onSearchHandler}) => {
 	
@@ -20,14 +19,14 @@ const Search = ({onSearchHandler}) => {
 		}
 	}
 	return (
-		<div className='search-container'>
-			<div className="search-bar">
+		<div className='search_container'>
+			<div className="search_container_bar">
 				<input type="text" placeholder="Search Here..." value={searchText} 
 					onChange={handleSearchInput} 
-					className="search-input" />
-				<button className="search-btn" onClick={handleSearch}>Search</button>
+					className="search_container_bar_input" />
+				<button className="search_container_bar_btn" onClick={handleSearch}>Search</button>
 			</div>
-			{error && <div className='search-error'>{error}</div>}
+			{error && <div className='search_container_error'>{error}</div>}
 		</div>
 		
 	)

@@ -1,11 +1,11 @@
 import React from 'react'
-import "./Loader.scss";
+import "./index.scss";
 import loader from "../../../public/assets/images/loader.gif";
 const Loader = () => {
 	return (
 		<>
 			<div className='loader_window'>
-				<img src={loader} className='custom-load' />
+				<img src={loader} className='loader_window_custom' />
 			</div>
 		</>
 	)

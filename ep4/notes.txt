@@ -13,7 +13,10 @@ version 1.2.3 (major.minor.patch(bug fixes))
 our version but not major version as it can break functionality 1.2.2->1.2.4
 - tilde (~) ->  consider update any version for patch and major versio automatically to bug
  fixex like 1.2.3 -> 1.2.3
-
+========================================================================================
+#React
+- Single page application => it doesn’t reload the page, just render another components
+- Client side Routing => doesn’t reload page, just render components when click on any page (Link) 
 ========================================================================================
 Config Driven UI : Whatever the condition coming from backend, UI will change.
 - based on the location the UI(color, bg) will change.
@@ -71,6 +74,11 @@ change, we need state
 #useEffect(Callback function, dependancy array);
 - Callback function call after Component render;
 - first body renderes, then useEffect called
+- to avoid this behaviour, it has dependancy array, it chnage the behaviour of useEffect.
+- if no dependancy array => useEffect called every render
+- if empty dependancy array [] => useEffect called only initial render(just once)
+- if dependancy array [dependancy array] => useEffect called when dependancy array updated/changed
+
 ========================================================================================
 ##Loader 
 - loader is not good
@@ -82,3 +90,16 @@ change, we need state
 - useState, change the state of variable internally, each render have its internal state and re-render the Component.
 - it create new state with new instance of const variable and trigger reconciliation cycle and re-render Component with new state value.
 - Thats why DOM manipulation is very fast by react
+
+========================================================================================
+
+#Routing
+- createBrowserRouter => recommedned by React, configuration of routes
+- RouterProvider => all data router need to pass this components to render app
+- children => to make header intact, use other routes as children of app
+- <Outlet /> => use in parent route to render all it children routes
+- Link => same like ancher tag but it doesn’t reload page 
+- dynamic routing => /path/:id
+### Two types : 
+#Client side Routing => in react, we have this, all html is loaded at once when we reload the page, when click on about, it just render the about components html,not make network call
+$Server Side Routing => when click on any page(about.html), it make a network call, fetch data from that network and display on web page, reload page

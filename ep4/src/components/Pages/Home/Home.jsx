@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import Search from './Search/Search';
-import Card from './Restaurant/Card/Card';
-const Body = () => {
+import Restaurant from './Restaurant/Restaurant';
+import "./Home.scss";
+const Home = () => {
 	
 	const [searchResInput, setSearchResInput] = useState("");
 
@@ -11,9 +12,9 @@ const Body = () => {
 	return (
 		<>
 			<Search onSearchHandler={handleSearchInput}/>
-			<Card searchResInput={searchResInput}/>
+			<Restaurant searchResInput={searchResInput}/>
 		</>
 	)
 }
 
-export default Body;
+export default Home;
