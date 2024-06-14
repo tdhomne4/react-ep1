@@ -1,56 +1,60 @@
 $primary-color: #fff;
+$layout-breakpoint-small: 767px;
 /*search component*/
 .search_container {
-	margin-top: 50px;
-	&_bar{
-		background-color: #444;
-		border-radius: 50px;
-		align-items: center;
-		padding: 5px;
-		display: flex;
-		&_input{
-			color: $primary-color;
-			background-color: #666;
-			border: none;
-			border-radius: 50px 0 0 50px;
-			outline: none;
-			flex-grow: 1;
-			padding: 15px 20px;
-			&:focus-visible{
-				background: #0b200d;
-			}
-		}
-		&_btn{
-				color: $primary-color;
-				cursor: pointer;
-				background: linear-gradient(90deg, #4bd559, #462129);
-				border: none;
-				border-radius: 0 50px 50px 0;
-				outline: none;
-				padding: 15px 25px;
-				font-weight: bold;
-				transition: background .3s;
-				width: 20%;
-				&:hover{
-					background: linear-gradient(90deg, #423135, #22d92d);
-				}
-		}
-	}
-	&_error {
-		color: red;
-		margin-top: 10px;
-		margin-left: 14px;
-		font-size: 14px;
-		font-weight: 500;
-	}
+  margin-top: 50px;
+  &_bar {
+    background-color: #444;
+    border-radius: 50px;
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    &_input {
+      color: $primary-color;
+      background-color: #666;
+      border: none;
+      border-radius: 50px 0 0 50px;
+      outline: none;
+      flex-grow: 1;
+      padding: 15px 20px;
+      &:focus-visible {
+        background: #0b200d;
+      }
+    }
+    &_btn {
+      color: $primary-color;
+      cursor: pointer;
+      background: linear-gradient(90deg, #4bd559, #462129);
+      border: none;
+      border-radius: 0 50px 50px 0;
+      outline: none;
+      padding: 15px 25px;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 20%;
+      &:hover {
+        background: linear-gradient(90deg, #423135, #22d92d);
+      }
+      @media (max-width: $layout-breakpoint-small) {
+        padding: 15px 15px;
+      }
+    }
+  }
+  &_error {
+    color: red;
+    margin-top: 10px;
+    margin-left: 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
 }
 
 /*restaurant component*/
-$primary_color : #fff;
-$sec_color : #000;
+$primary_color: #fff;
+$sec_color: #000;
 
 .top_rated {
-	margin: 50px 0px;
+  margin: 50px 0px;
   display: flex;
   justify-content: space-between;
   &_btn {
@@ -62,11 +66,11 @@ $sec_color : #000;
     padding: 10px 20px;
     border-radius: 10px;
     border-color: #1f952b;
-    &:hover{
+    &:hover {
       box-shadow: 1px 1px $sec_color;
     }
   }
-  &_reset{
+  &_reset {
     color: $primary_color;
     background: $sec_color;
     font-size: 20px;
@@ -75,36 +79,42 @@ $sec_color : #000;
     padding: 10px 20px;
     border-radius: 10px;
     border-color: $sec_color;
-    &:hover{
+    &:hover {
       box-shadow: 1px 1px $sec_color;
     }
   }
 }
-.card_container{
-	 display: flex;
+.card_container {
+  display: flex;
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
   background-color: #f5f5f5;
   padding: 20px;
   margin-top: 50px;
-  &_card{
+  a {
+    text-decoration: none;
+    color: unset;
+    flex: 0 0 29.33%;
+  }
+  &_card {
     background-color: $primary_color;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 20px;
-    // max-width: 350px;
-    flex : 0 0 29.33%;
     text-align: left;
     font-family: Arial, sans-serif;
-    transition: filter 0.3s ease; 
+    transition: filter 0.3s ease;
+    @media (max-width: $layout-breakpoint-small) {
+      flex: auto;
+    }
     &-image {
       width: 100%;
       height: auto;
     }
-    &:hover{
-      filter: drop-shadow(10px 10px 20px rgba(36, 36, 36, 0.5)); 
+    &:hover {
+      filter: drop-shadow(10px 10px 20px rgba(36, 36, 36, 0.5));
       cursor: pointer;
     }
     &-quote {
@@ -121,31 +131,31 @@ $sec_color : #000;
     }
     &_info {
       padding: 20px;
-      .res-name{
-          font-size: 22px;
-          font-weight: 600;
-          margin-bottom: 10px;
-          // height: 25px;
-        &:hover{
+      .res-name {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        // height: 25px;
+        &:hover {
           color: #1f952b;
         }
-        }
+      }
       p.card-cuisines {
-          font-size: 12px;
+        font-size: 12px;
+        color: #605959;
+      }
+      .card-cost {
+        font-size: 16px;
+        &:hover {
           color: #605959;
         }
-        .card-cost{
-          font-size: 16px;
-          &:hover{
-            color:#605959;
-          }
-        }
-      .rating_sec{
+      }
+      .rating_sec {
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
         margin-bottom: 10px;
-        &_ratings{
+        &_ratings {
           color: green;
           font-size: 17px;
           font-weight: bold;
@@ -162,8 +172,6 @@ $sec_color : #000;
         color: #43434a;
         font-weight: 500;
       }
-     
     }
   }
-  
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { CDN_URL } from "../../../../utils/constants";
 // import Loader from "../../../Laoder/Loader"
 import Shimmer from "../../../Loading/Shimmer";
@@ -69,8 +70,9 @@ const Restaurant = ({ searchResInput }) => {
         )}
       </div>
       <div className="card_container">
-        {filterResData?.map(({ info: restaurant }, index) => (
-          <div className="card_container_card" key={restaurant.id}>
+        {filterResData?.map(({ info: restaurant }) => (
+          <Link to={`restaurants/${restaurant.id}`} key={restaurant.id}>
+            <div className="card_container_card">
             {restaurant.cloudinaryImageId ? (
               <img
                 src={CDN_URL + restaurant.cloudinaryImageId}
@@ -95,6 +97,7 @@ const Restaurant = ({ searchResInput }) => {
               </div>
             </div>
           </div>
+        </Link>
         ))}
       </div>
     </>

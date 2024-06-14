@@ -1,5 +1,6 @@
 $primary-color: #fff;
 $secondary-color: #000;
+$third-color: #1f952b;
 $absolute-position: absolute;
 $display-flex: flex;
 $flex-auto: 1 1 auto;
@@ -8,14 +9,15 @@ $layout-breakpoint-small: 767px;
 @mixin border-bottom($border-bottom) {
   border-bottom: $border-bottom;
 }
-
+@mixin text-align {
+  text-align: center;
+}
 @mixin menu-toggle-close {
   font-size: 30px;
   background: none;
   border: none;
   cursor: pointer;
 }
-
 
 .header {
   @include border-bottom(1px solid rgba(0, 45, 67, 0.09));
@@ -141,24 +143,81 @@ $layout-breakpoint-small: 767px;
 
 /*Page Not Found*/
 .notfound_container {
-	margin: 50px auto;
-	width: 100%;
-	text-align: center;
-  .notfound_content p{
+  margin: 50px auto;
+  width: 100%;
+  text-align: center;
+  .notfound_content p {
     color: #000;
     font-size: 21px;
     margin: 30px auto;
     font-weight: 600;
   }
-  .notfound_content a{
+  .notfound_content a {
     color: #fff;
-    background: #1f952b;
-    border-color: #1f952b;
+    background: $third-color;
+    border-color: $third-color;
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 20px;
     font-weight: 400;
     line-height: 1.5;
     text-decoration: none;
+  }
+}
+/*Footer*/
+.footer_container {
+  background: #fff;
+  border-bottom: 1px solid #002d4317;
+  width: 100%;
+  padding: 20px 0 30px;
+  margin: 50px auto;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: $layout-breakpoint-small) {
+    display: block;
+    margin: 50px 0px;
+    .footer_col_1,
+    .footer_col_2 {
+      @include text-align;
+      
+    }
+  }
+
+  .footer_col_2 h2 {
+    margin: 0px 0px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .footer_col_2_menu li {
+    list-style: none;
+    padding: 5px 0px;
+    a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 400;
+      font-size: 16px;
+      &:hover {
+        color: $third-color;
+      }
+    }
+  }
+  ul.social_icons {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: $layout-breakpoint-small) {
+      justify-content: space-evenly;
+    }
+    li {
+      list-style: none;
+      margin: 0px 10px;
+
+      a {
+        color: $third-color;
+        font-size: 50px;
+        @media (max-width: $layout-breakpoint-small) {
+          font-size: 30px;
+        }
+      }
+    }
   }
 }

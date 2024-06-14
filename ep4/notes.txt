@@ -98,8 +98,9 @@ change, we need state
 - RouterProvider => all data router need to pass this components to render app
 - children => to make header intact, use other routes as children of app
 - <Outlet /> => use in parent route to render all it children routes
-- Link => same like ancher tag but it doesn’t reload page 
+- Link => same like ancher tag but it doesn’t reload page , its wrapper over ancher tag which keep track and make not to reload page
 - dynamic routing => /path/:id
 ### Two types : 
 #Client side Routing => in react, we have this, all html is loaded at once when we reload the page, when click on about, it just render the about components html,not make network call
 $Server Side Routing => when click on any page(about.html), it make a network call, fetch data from that network and display on web page, reload page
+-useParams => hook to get the url params

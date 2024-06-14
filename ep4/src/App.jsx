@@ -6,11 +6,14 @@ import Home from "./components/Pages/Home/Home";
 import About from "./components/Pages/About/About";
 import Contact from "./components/Pages/Contact/Contact";
 import PageNotFound from "./components/Layout/PageNotFound";
+import Footer from "./components/Layout/Footer/Footer";
+import ResDetails from "./components/Pages/ResDetails/ResDetails";
 const App = () => {
   return (
     <div className="container">
       <Layout />
       <Outlet />
+      <Footer />
     </div>
   );
 };
@@ -30,6 +33,10 @@ const appRouter = createBrowserRouter([
       {
         path : "/contact",
         element : <Contact />
+      },
+      {
+        path : "/restaurants/:resId",
+        element : <ResDetails />
       },
     ],
     errorElement : <PageNotFound />
