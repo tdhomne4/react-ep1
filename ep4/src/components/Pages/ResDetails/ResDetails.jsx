@@ -1,11 +1,14 @@
 import React, {useEffect,useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { json, useParams } from 'react-router-dom';
 import { PiMotorcycleFill } from "react-icons/pi";
 import { RES_DETAILS_API,removeHTMLTags } from '../../../utils/constants';
 import "./ResDetails.scss";
+import Shimmer from '../../Loading/Shimmer';
+import ResMenu from './ResMenu';
 const ResDetails = () => {
 	const {resId} = useParams();
 	const [resDetails, setResDetails] = useState([]);
+	const [resMenus, setMenus] = useState([]);
 
 	useEffect(() => {
 		fetchRedDetails();
@@ -16,10 +19,13 @@ const ResDetails = () => {
 		const jsonData = await data.json(); 
 		console.log(jsonData);
 		setResDetails(jsonData?.data?.cards[2]?.card?.card?.info);
+		setMenus(jsonData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 	} 
 	const {name,avgRatingString,totalRatingsString,costForTwoMessage,areaName,sla,feeDetails} = resDetails;
 	console.log(sla);
 	return (
+		<>
+		{Object.keys(resDetails).length === 0 ? <Shimmer condition="Res details" /> : 
 		<div className='res_details'>
 			<div className="res_details_name">
 				<h1>{name}</h1>
@@ -54,7 +60,10 @@ const ResDetails = () => {
 				</div>
 			</div>
 			</div>
+			<ResMenu resDetailsData={resMenus} />
 		</div>
+	}
+	</>
 	)
 }
 export default ResDetails;

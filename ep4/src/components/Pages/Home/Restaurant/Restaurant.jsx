@@ -21,7 +21,7 @@ const Restaurant = ({ searchResInput }) => {
     const searchResData = listOfRes.filter((res) =>
       res.info.name.toLowerCase().includes(searchResInput.toLowerCase())
     );
-    setFilterResData(searchResData);
+   setFilterResData(searchResData);
   };
   const fetchResData = async () => {
     const data = await fetch(
@@ -40,7 +40,7 @@ const Restaurant = ({ searchResInput }) => {
   };
   //conditional rendering
   return filterResData.length === 0 ? (
-    <Shimmer />
+    <Shimmer condition="Home Res" />
   ) : (
     <>
       <div className="top_rated">

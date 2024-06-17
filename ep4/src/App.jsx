@@ -13,7 +13,7 @@ const App = () => {
     <div className="container">
       <Layout />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
