@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { PiMotorcycleFill } from "react-icons/pi";
 import { RES_DETAILS_API,removeHTMLTags } from '../../../utils/constants';
 import "./ResDetails.scss";

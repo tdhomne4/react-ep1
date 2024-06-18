@@ -3,12 +3,15 @@ import { FiCircle } from "react-icons/fi";
 import "./ResDetails.scss";
 import {CDN_URL} from "../../../utils/constants"
 const ResMenu = ({ resDetailsData }) => {
-  const [isOpen, setIsOpen] = useState(true);
+	const [openAccordions, setOpenAccordions] = useState(Array(resDetailsData?.length).fill(false));
+	console.log(openAccordions);
   resDetailsData = resDetailsData.slice(1);
-	console.log(resDetailsData);
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
+  const toggleAccordion = (index) => {
+		setOpenAccordions((prevOpenAccordions) => 
+		prevOpenAccordions.map((isOpen,i) => (
+			i === index ? !isOpen : isOpen
+		)))
   };
 
   return (
@@ -17,22 +20,21 @@ const ResMenu = ({ resDetailsData }) => {
         <hr className="outlet_time_break"></hr>
 				{resDetailsData?.length > 0 ? 
 					resDetailsData?.map((res,index) => (
-						<div className="res_menus_accordion" key={index + 1}>
-						<button className="accordion_header" onClick={toggleAccordion}>
-							<h3 className="menu_name">{res?.card?.card?.title}Recommended (15)</h3>
-							<span>{isOpen ? "-" : "+"}</span>
+						<>
+						<div className="res_menus_accordion" key={index} onClick={() => toggleAccordion(index)}>
+						<button className="accordion_header">
+							<h3 className="menu_name">{res?.card?.card?.title}</h3>
+							<span>{openAccordions[index] ? "-" : "+"}</span>
 						</button>
-						{isOpen ? (
+						{openAccordions[index] ? (
 							res?.card?.card?.itemCards?.length > 0 ? 
 								res.card.card.itemCards.map((menu,index) => (
-									<div className="accordion_content">
+									<div className="accordion_content" key={index}>
 								<div className="menu_content">
 									<div className="menu_details">
-										<div className="veg_nonveg_sec">
-											<FiCircle />
-										</div>
 										<div className="menu_name">
-											<h5>{menu.card.info.name}</h5>
+											{menu.card.info.itemAttribute.vegClassifier === "VEG" ? <FiCircle className="veg_meal"/> : <FiCircle className="nonveg_meal"/>  }
+										<h5>{menu.card.info.name}</h5>
 										</div>
 										<div className="menu_price">
 											<span>Rs. {menu.card.info.price/100}</span>
@@ -61,6 +63,8 @@ const ResMenu = ({ resDetailsData }) => {
 							
 						) : ""}
 					</div>
+					<div className="res_menu_divider"></div>
+					</>
 					))
 					
 					: ""}

@@ -178,6 +178,7 @@
     }
   }
   .accordion_content {
+    margin-bottom: 20px;
     .menu_content {
       display: flex;
       justify-content: space-between;
@@ -185,16 +186,29 @@
       .menu_details {
         width: 60%;
       }
-      .veg_nonveg_sec svg {
-        color: red;
-        fill: red;
-        font-size: 12px;
-      }
-      .menu_name h5 {
-        margin-top: 8px;
-        font-size: 17px;
-        font-weight: 700;
-        margin-bottom: 5px;
+      .menu_name {
+        display: flex;
+        h5 {
+          margin-left: 10px;
+          margin-bottom: 5px;
+          font-size: 17px;
+          font-weight: 700;
+          margin-top: 1px;
+        }
+        svg.veg_meal {
+          color: green;
+          fill: green;
+          padding: 5px 5px;
+          border: 1px solid green;
+          font-size: 12px;
+        }
+        svg.nonveg_meal {
+          color: red;
+          fill: red;
+          font-size: 12px;
+          padding: 5px 5px;
+          border: 1px solid red;
+        }
       }
       .menu_price {
         margin-bottom: 8px;
@@ -226,10 +240,14 @@
       }
       .menu_img_sec img {
         background-blend-mode: overlay;
-        height: 144px;
         border-radius: 8px;
-				width: 170px;
+        height: 150px;
+        width: 150px;
       }
     }
   }
+}
+.res_menu_divider {
+  height: 16px;
+  border-bottom: 16px solid rgba(2, 6, 12, 0.0509803922);
 }
