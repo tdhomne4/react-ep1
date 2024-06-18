@@ -17,12 +17,10 @@ const ResDetails = () => {
 	const fetchRedDetails = async () => {
 		const data = await fetch(RES_DETAILS_API+resId);
 		const jsonData = await data.json(); 
-		console.log(jsonData);
 		setResDetails(jsonData?.data?.cards[2]?.card?.card?.info);
 		setMenus(jsonData?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 	} 
 	const {name,avgRatingString,totalRatingsString,costForTwoMessage,areaName,sla,feeDetails} = resDetails;
-	console.log(sla);
 	return (
 		<>
 		{Object.keys(resDetails).length === 0 ? <Shimmer condition="Res details" /> : 
