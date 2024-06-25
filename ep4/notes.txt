@@ -104,3 +104,44 @@ change, we need state
 #Client side Routing => in react, we have this, all html is loaded at once when we reload the page, when click on about, it just render the about components html,not make network call
 $Server Side Routing => when click on any page(about.html), it make a network call, fetch data from that network and display on web page, reload page
 -useParams => hook to get the url params
+
+========================================================================================
+React Class Component : 
+- class ClassName extends React.Compenent{} // know react that its a class component
+- Normal javascript classs
+- class has render() method which return some piece of JSX.
+- When any class found in an component, then instance of a class is created 
+
+-> parent constructor 
+-> parent render 
+-> first classchild constructor 
+-> first classchild render 
+-> second classchild constructor 
+-> second classchild render 
+->Once the DOM is loader, then  
+====>>>all above is in render phase of react
+-> first classchild componentDidmount() 
+-> second classchild componentDidmount() 
+->  parent componentDidMount()
+====>>>all above is in commit phase of react
+ 
+ called in this way. 
+- all this is called lifecycle methods of react class.
+
+##componentDidMount() 
+- API call is make inside this.
+##why ?
+- first we render the component and wait for API call. Once API give response we fill the UI with data.
+- We don't wait for the API response to render the component. as it will break UI.
+- thats why, after componentDidMount we will all API.
+
+##props
+- why super(props) is used ? 
+		-- when make a class, we extends it from superClass(React.Compenent), it inherit the properties and methods from superClass.
+		-- super(props), it pass props from subClass to superClass and call constructor of superClass and make props available in subClass by using this (this.props.name) 
+
+##State
+- best place to define state and get props is in the constructor.
+- we can make state using "this.state" keyword.
+- state in this is whole object for all state variable in class component.
+- this.setState({}) // use to update state variable in class component
