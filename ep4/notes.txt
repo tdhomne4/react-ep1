@@ -106,7 +106,7 @@ $Server Side Routing => when click on any page(about.html), it make a network ca
 -useParams => hook to get the url params
 
 ========================================================================================
-React Class Component : 
+React Class Component :  About Component
 - class ClassName extends React.Compenent{} // know react that its a class component
 - Normal javascript classs
 - class has render() method which return some piece of JSX.
@@ -123,8 +123,12 @@ React Class Component :
 -> first classchild componentDidmount() 
 -> second classchild componentDidmount() 
 ->  parent componentDidMount()
-====>>>all above is in commit phase of react
- 
+====>>>all above is in commit phase of react/ DOM is updated in single BATCH/ API call make in this, 
+-> if state change then again render(with API data) is called
+-> REACT update DOM again with API data
+-> then componentDidUpdate() called
+-> when component is removed from DOM -> called ComponentWillUnmount() -> call when we go to another component
+->ComponentWillUnmount() will use to clear time internal or localStorage, session
  called in this way. 
 - all this is called lifecycle methods of react class.
 

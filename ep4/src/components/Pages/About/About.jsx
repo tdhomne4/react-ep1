@@ -5,18 +5,23 @@ class About extends React.Component {
   constructor(props ){
     super(props);
     console.log("parent constructor");
+    this.state = {
+      userData : []
+    }
   }
-  componentDidMount(){
+ async componentDidMount(){
     console.log("parent componentDidMount()");
+    let getUsersData = await fetch("https://jsonplaceholder.typicode.com/users");
+    getUsersData = await getUsersData.json();
+    this.setState({ userData: getUsersData });
+    console.log(getUsersData);
   }
   render() {
     console.log("parent render");
 
     return (
       <div>
-        <UserClass name={"first class"} location={"Indore"} />
-        <UserClass name={"second class"} location={"Indore"} />
-        <UserClass name={"third class"} location={"Indore"} />
+        <UserClass name={"About Us"} location={"About Data"}  userData={this.state.userData} />
       </div>
     );
   }

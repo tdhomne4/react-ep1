@@ -1,0 +1,37 @@
+.user-data {
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .user-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .user-card {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px;
+        width: 300px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            margin-top: 0;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        strong {
+            display: inline-block;
+            width: 80px;
+        }
+    }
+}
