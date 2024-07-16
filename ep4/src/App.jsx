@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy,Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes , createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom';
 import Layout from "./components/Layout/Layout"
@@ -8,6 +8,9 @@ import Contact from "./components/Pages/Contact/Contact";
 import PageNotFound from "./components/Layout/PageNotFound";
 import Footer from "./components/Layout/Footer/Footer";
 import ResDetails from "./components/Pages/ResDetails/ResDetails";
+//import Grocery from "./components/Grocery/Grocery"; //don't import like this to make seperate bundle. import in lazy
+
+const Grocery = lazy(() => import("./components/Grocery/Grocery"))
 const App = () => {
   return (
     <div className="container">
@@ -37,6 +40,10 @@ const appRouter = createBrowserRouter([
       {
         path : "/restaurants/:resId",
         element : <ResDetails />
+      },
+      {
+        path : "/grocery",
+        element : <Suspense fallback={<p>Loading....</p>}><Grocery /></Suspense>
       },
     ],
     errorElement : <PageNotFound />

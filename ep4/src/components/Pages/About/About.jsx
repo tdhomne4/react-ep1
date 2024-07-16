@@ -21,7 +21,7 @@ class About extends React.Component {
 
     return (
       <div>
-        <UserClass name={"About Us"} location={"About Data"}  userData={this.state.userData} />
+        <UserClass name={"About Us"} usersInfo={"Users Information"}  userData={this.state.userData} />
       </div>
     );
   }

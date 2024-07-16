@@ -149,3 +149,25 @@ React Class Component :  About Component
 - we can make state using "this.state" keyword.
 - state in this is whole object for all state variable in class component.
 - this.setState({}) // use to update state variable in class component
+
+========================================================================================
+optimization ofApp : 
+
+#Single Responsibility Principle : 
+- use and create custom hooks for each functionality as then component will only resposible for displaying data
+
+#Bundling
+- it bundle all files and make a one js file but we need to keep checking the size of this one js file
+- to make this, we can make smaller bundles of this files called => 
+		-	Chunking, 
+		- Code Splitting, 
+		- Lazy loading, 
+		- Dynamic Bundling
+		- make smalled bundles for different major component
+
+#- How to cretae seperate bundles : 
+	- create on demand loading, when click on that page then only it load 
+	- use Lazy() function provided by react, and import seperate bundle component in lazy function
+	- const Grocery = lazy(() => import(path_of_Grocery_component))
+	- suspense error for Route.provider =>  to fix this, use Suspense component by react and wrap lazy component in it and all fallback parameter to show loading state until Grocery loads.
+	- this error because Grocery code is not in main bundle, to load another bundle it take some time and show error

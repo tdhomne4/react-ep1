@@ -1,37 +1,91 @@
-.user-data {
-    text-align: center;
-    font-family: Arial, sans-serif;
+$primary-color: #333;
+$secondary-color: #555;
+$background-color: #f9f9f9;
+$font-family: Arial, sans-serif;
 
-    h1 {
-        margin-bottom: 20px;
-    }
+body {
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
 
-    .user-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    .user-card {
-        background: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 10px;
-        width: 300px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+h1 {
+  color: $primary-color;
+  text-align: center;
+}
+.users {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 25px;
+  flex-wrap: wrap-reverse;
+}
+.user-card {
+  border: 1px solid $secondary-color;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: $background-color;
+  page-break-inside: avoid;
+//   width: 25%;
+}
 
-        h2 {
-            margin-top: 0;
-        }
+h2 {
+  color: $primary-color;
+  margin-bottom: 10px;
+  text-align: left;
+}
 
-        p {
-            margin: 5px 0;
-        }
+h3 {
+  color: $secondary-color;
+  margin: 10px 0 5px;
+  text-align: center;
+}
 
-        strong {
-            display: inline-block;
-            width: 80px;
-        }
-    }
+.address,
+.company {
+  margin-top: 15px;
+  padding-left: 10px;
+  border-left: 3px solid $primary-color;
+}
+
+p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+strong {
+  color: $primary-color;
+}
+
+@media print {
+  body {
+    background: none;
+    color: #000;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .user-card {
+    border: none;
+    background: none;
+  }
+
+  .address,
+  .company {
+    border-left: 2px solid #000;
+  }
 }

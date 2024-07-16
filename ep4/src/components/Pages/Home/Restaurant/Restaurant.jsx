@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import { CDN_URL } from "../../../../utils/constants";
 // import Loader from "../../../Laoder/Loader"
 import Shimmer from "../../../Loading/Shimmer";
+import useFetchResData from "../../../../utils/useFetchResData";
 
 const Restaurant = ({ searchResInput }) => {
-  const [listOfRes, setListOfRes] = useState([]);
+  const listOfRes = useFetchResData();
   const [filterResData, setFilterResData] = useState([]);
   const [filterBtnName, setFilterBtnName] = useState("Top Rated Restaurants");
 
   useEffect(() => {
-    fetchResData();
-  }, []);
-
-  useEffect(() => {
+    if (listOfRes) {
+      setFilterResData(listOfRes);
+    }
     fetchSearchResData();
-  }, [searchResInput]);
+  }, [searchResInput,listOfRes]);
 
   const fetchSearchResData = () => {
     const searchResData = listOfRes.filter((res) =>
@@ -23,21 +23,7 @@ const Restaurant = ({ searchResInput }) => {
     );
    setFilterResData(searchResData);
   };
-  const fetchResData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.7195687&lng=75.8577258&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const jsonData = await data.json();
-    //optional chaining
-    setListOfRes(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setFilterResData(
-      jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  };
+
   //conditional rendering
   return filterResData.length === 0 ? (
     <Shimmer condition="Home Res" />
@@ -61,7 +47,7 @@ const Restaurant = ({ searchResInput }) => {
           <button
             className="top_rated_reset"
             onClick={() => {
-              fetchResData();
+              setFilterResData(listOfRes);
               setFilterBtnName("Top Rated Restaurants");
             }}
           >

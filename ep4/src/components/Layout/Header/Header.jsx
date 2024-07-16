@@ -55,6 +55,9 @@ const Header = (props) => {
               <li>
                 <Link to="/products">Products</Link>
               </li>
+              <li>
+                <Link to="/grocery">Grocery</Link>
+              </li>
             </ul>
           </div>
         </div>
