@@ -1,3 +1,6 @@
-##Tailwind
-
-- It fast, flexible,reliable and zero runtime.
+***Tailwind****
+- fast, flexible, reliable and zero runtime
+- npm install -D tailwindcss postcss
+- Postscc => to tranform css with javascript
+- npx tailwind init => initialize tailwind with config file , configuration file for tailwind
+- postcss.config.js => configuration file for postcss, which read by bundler/parcel to understand tailwind and  apply tailwind css on the project 
