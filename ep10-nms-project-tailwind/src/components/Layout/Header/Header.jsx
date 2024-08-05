@@ -19,44 +19,44 @@ const Header = (props) => {
   const isSticky = () => {
     /* Method that will fix header after a specific scrollable */
     const scrollTop = window.scrollY;
-    const stickyClass = scrollTop >= 250 ? "is-sticky" : "";
+    const stickyClass = scrollTop >= 250 ? "sticky top-0 z-max" : "";
     setSticky(stickyClass);
   };
 
   return (
-    <div className={`header ${sticky}`}>
-      <div className={`header_container ${style.header_container} `}>
-        <div className="header_container_logo">
+    <div className={`bg-white border-b-0 pt-5 pb-5 ${sticky}`}>
+      <div className="flex items-center">
+        <div className="flex-auto">
           <a href="/">
-            <img className="header_container_logo_img" src={Logo} alt="Eatance_Logo" />
+            <img src={Logo} alt="Eatance_Logo" />
           </a>
         </div>
         <div className="header_container_nav">
           {isMenuOpen ? (
-            <a className="header_container_nav_close_menu" onClick={toggleMenu}>
+            <a className="cursor-pointer bg-none text-4xl" onClick={toggleMenu}>
               ×
             </a>
           ) : (
-            <button className="header_container_nav_menu_toggle" onClick={toggleMenu}>
+            <button className="cursor-pointer bg-none text-3xl md:hidden block" onClick={toggleMenu}>
               ☰
             </button>
           )}
-          <div className={`header_container_nav_items ${isMenuOpen ? "open" : ""}`}>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
+          <div className={`header_container_nav_items max-md:absolute max-md:right-[-11px] max-md:w-[200px] max-md:bg-primary max-md:transition-transform max-md:duration-500 max-md:transform max-md:translate-x-[200%] ${isMenuOpen ? "max-md:translate-x-0" : ""}`}>
+            <ul className="flex max-md:flex-col">
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Home</Link>
               </li>
-              <li>
-                <Link to="/about">About Us</Link>
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/about" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">About Us</Link>
               </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/contact" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Contact Us</Link>
               </li>
-              <li>
-                <Link to="/products">Products</Link>
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/products" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Products</Link>
               </li>
-              <li>
-                <Link to="/grocery">Grocery</Link>
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/grocery" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Grocery</Link>
               </li>
             </ul>
           </div>

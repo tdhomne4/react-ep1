@@ -6,3 +6,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .custom-hover-gradient {
+    @apply text-white cursor-pointer bg-gradient-to-r from-[#4bd559] to-[#462129] border-none rounded-r-full px-6 py-4 font-bold transition-colors duration-300 w-[20%];
+  }
+
+  .custom-hover-gradient:hover {
+    background: linear-gradient(90deg, #423135, #22d92d);
+  }
+}

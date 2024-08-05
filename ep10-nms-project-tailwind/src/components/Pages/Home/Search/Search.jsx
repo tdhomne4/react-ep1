@@ -19,14 +19,14 @@ const Search = ({onSearchHandler}) => {
 		}
 	}
 	return (
-		<div className='search_container'>
-			<div className="search_container_bar">
+		<div className='mt-[50px]'>
+			<div className="bg-[#444] rounded-[50px] flex items-center p-[5px]">
 				<input type="text" placeholder="Search Here..." value={searchText} 
 					onChange={handleSearchInput} 
-					className="search_container_bar_input" />
-				<button className="search_container_bar_btn" onClick={handleSearch}>Search</button>
+					className="text-white bg-[#666] rounded-s-[50px] flex-grow py-4 px-5 focus-visible:bg-[#0b200d]" />
+				<button className="custom-hover-gradient" onClick={handleSearch}>Search</button>
 			</div>
-			{error && <div className='search_container_error'>{error}</div>}
+			{error && <div className='text-red-500 font-semibold text-sm mt-[10px] ml-[14px] search_container_error'>{error}</div>}
 		</div>
 		
 	)
