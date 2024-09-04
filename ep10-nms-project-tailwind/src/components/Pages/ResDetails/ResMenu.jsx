@@ -5,13 +5,14 @@ import { CDN_URL } from "../../../utils/constants";
 import Search from "../Home/Search/Search";
 
 const ResMenu = ({ resDetailsData }) => {
+
   const [openAccordions, setOpenAccordions] = useState(Array(resDetailsData?.length).fill(false));
   const [searchInput, setSearchInput] = useState("");
   const [filterResMenus, setFilterResMenus] = useState(resDetailsData.slice(1));
 
   const toggleAccordion = (index) => {
     setOpenAccordions((prevOpenAccordions) =>
-      prevOpenAccordions.map((isOpen, i) => (i === index ? !isOpen : isOpen))
+      prevOpenAccordions.map((isOpen, i) => (i === index && !isOpen))
     );
   };
 
@@ -45,7 +46,7 @@ const ResMenu = ({ resDetailsData }) => {
             <div key={index}>
               <div className="res_menus_accordion" onClick={() => toggleAccordion(index)}>
                 <button className="accordion_header">
-                  <h3 className="menu_name">{res?.card?.card?.title}</h3>
+                  <h3 className="menu_name">{res?.card?.card?.title} <span>({res?.card?.card?.itemCards?.length})</span></h3>
                   <span>{openAccordions[index] ? "-" : "+"}</span>
                 </button>
                 {openAccordions[index] ? (
@@ -75,6 +76,9 @@ const ResMenu = ({ resDetailsData }) => {
                             </div>
                           </div>
                           <div className="menu_img_sec">
+                            <div className="absolute">
+                              <button className="p-2 text-white bg-black shadow-lg m-auto rounded-lg mx-10 bottom-0">Add +</button>
+                            </div>
                             <img src={CDN_URL + menu.card.info.imageId} alt="" />
                           </div>
                         </div>

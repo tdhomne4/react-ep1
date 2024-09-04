@@ -28,8 +28,8 @@ class UserClass extends React.Component {
         <h1>{name}</h1>
         <h3>{usersInfo}</h3>
         <div class="users">
-          {this.props.userData.map((user) => (
-            <div class="user-card">
+          {this.props.userData.map((user,index) => (
+            <div class="user-card" key={index}>
               <h2>{user.name}</h2>
               <p>
                 <strong>Username:</strong> {user.username}

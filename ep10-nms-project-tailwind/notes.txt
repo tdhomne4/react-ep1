@@ -4,3 +4,28 @@
 - Postscc => to tranform css with javascript
 - npx tailwind init => initialize tailwind with config file , configuration file for tailwind
 - postcss.config.js => configuration file for postcss, which read by bundler/parcel to understand tailwind and  apply tailwind css on the project 
+
+***higher order component****
+- component take input as a component and return enhance of another component or same one
+
+***State lifting***
+- every component has its own State
+- is state is managed by child component
+- we lift state up, state is manage by the parent component
+
+***Controlled component***
+- when component's visibility is based on the state value
+
+
+***Props Drilling***
+- if want to send data to 7th child component from parent component, then we need to pass it to first child then second child and so on till 7th child.
+- this is problem in react => props Drilling
+- so react introduced Context => we place data at global level, from where anybody can access it.
+
+***Context***
+- createContext() -> create context which store data
+- useContext() -> to use context data in any component
+- Context.Provider(value=({loggedInuser  : "new data})) -> update context data
+- wrap all component inside Context.Provider, so anywhere you can use updated value
+- all wrapped component, will have updated value and outside component have default value
+- we can also update context value from any component, by passing SetuserName update state function along with value in provider

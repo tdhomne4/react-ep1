@@ -1,10 +1,13 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../../public/assets/images/Eatance_Logo.png";
 import style from './style.module.scss';
+import UserContext from "../../../utils/UserContext";
 const Header = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sticky, setSticky] = useState("");
+
+  const {loggedInUser} = useContext(UserContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -57,6 +60,9 @@ const Header = (props) => {
               </li>
               <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
                 <Link to="/grocery" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Grocery</Link>
+              </li>
+              <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
+                <Link to="/" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">{loggedInUser}</Link>
               </li>
             </ul>
           </div>

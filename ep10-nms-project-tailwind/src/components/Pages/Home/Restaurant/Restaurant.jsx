@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { CDN_URL } from "../../../../utils/constants";
+import React, { useState, useEffect, useContext } from "react";
 // import Loader from "../../../Laoder/Loader"
 import Shimmer from "../../../Loading/Shimmer";
 import useFetchResData from "../../../../utils/useFetchResData";
+import Card from "./Card";
+import UserContext from "../../../../utils/UserContext";
 
 const Restaurant = ({ searchResInput }) => {
   const listOfRes = useFetchResData();
@@ -23,6 +23,8 @@ const Restaurant = ({ searchResInput }) => {
     );
    setFilterResData(searchResData);
   };
+
+  const {loggedInUser, setUserName} = useContext(UserContext);
 
   //conditional rendering
   return filterResData.length === 0 ? (
@@ -53,40 +55,29 @@ const Restaurant = ({ searchResInput }) => {
           >
             {filterBtnName}
           </button>
-        )}
+          )}
+          <p>UserInfo : <input type="text" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/> </p>
       </div>
       <div className="card_container">
-        {filterResData?.map(({ info: restaurant }) => (
-          <Link to={`restaurants/${restaurant.id}`} key={restaurant.id}>
-            <div className="card_container_card">
-            {restaurant.cloudinaryImageId ? (
-              <img
-                src={CDN_URL + restaurant.cloudinaryImageId}
-                alt={restaurant.name}
-                className="card_container_card_img"
-              />
-            ) : (
-              ""
-            )}
-            <div className="card_container_card_info">
-              <p className="res-name">{restaurant.name}</p>
-              <p className="card-cuisines">
-                — {restaurant.cuisines.join(", ")}
-              </p>
-              <p className="card-cost">— {restaurant.costForTwo}</p>
-              <div className="rating_sec">
-                <span className="rating_sec_ratings">{restaurant.avgRating}</span>
-                <span className="rating_sec_time">{restaurant.sla.slaString}</span>
-              </div>
-              <div className="card_container_card_address">
-                <span>{restaurant.areaName}</span>
-              </div>
-            </div>
-          </div>
-        </Link>
-        ))}
+      {filterResData?.map(({ info: restaurant }) => {
+        const PromotedCard = restaurant.avgRating > 4.4 ? withPromotedLabel(Card) : Card;
+        return <PromotedCard key={restaurant.id} restaurantData={restaurant} />;
+      })}
       </div>
     </>
   );
 };
+
+//Higher order component, take one component as input => return enhanced component/jsx
+const withPromotedLabel = (Card) => {
+  return ({restaurantData}) => {
+    return (
+      <div>
+        
+          <label className="promoted-label">Promoted</label>
+          <Card restaurantData={restaurantData}/>
+      </div>
+    )
+  }
+}
 export default Restaurant;
