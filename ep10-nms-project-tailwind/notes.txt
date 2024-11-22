@@ -29,3 +29,30 @@
 - wrap all component inside Context.Provider, so anywhere you can use updated value
 - all wrapped component, will have updated value and outside component have default value
 - we can also update context value from any component, by passing SetuserName update state function along with value in provider
+
+========================================================================================
+##Redux Toolkit 
+
+***Redux Toolkit why ? 
+- make redux store complicated.
+- need to do more complicated
+- need to install more packages to make redux useful
+- use to managing the data
+
+***Store :
+- big whole object which contain multiple small slices of object
+- kept in central global place
+- to modify data in store, need to dispatch Action -> Call function() [Reducer] -> function modified the data
+- to read data in store, use "Selector" called -> subscribing to the store (update UI when data change in store -> syncing)
+
+***Installations and setup steps: 
+- Install @reduxjs/toolkit (npm i @reduxjs/toolkit) and react-redux (npm i react-redux)
+- build our store 
+- Connect store to our App 
+- Slice (Cart Slice) 
+- Dispatch (Action)
+- Selector
+
+**Implementations : 
+
+- configureStore() =>  create redux store
