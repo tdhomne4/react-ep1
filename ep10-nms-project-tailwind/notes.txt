@@ -55,4 +55,14 @@
 
 **Implementations : 
 
-- configureStore() =>  create redux store
+- configureStore() =>  create redux store  {appStore.js}
+- provide store to our app  (App.js)
+- create slice which contain, state and actions, reducers function which perform the actions. {cartSlice.js}
+- configured the reducers to our app store
+- to get store data, useSelector (redux hook)
+
+**Interview quantion : 
+- subscribe right portion of store like cart items not the whole store and then extract items its wrong and less efficient
+- because store update when any changes happened in it.
+- in appStore, we have big Reducer which contain small reducers of slice.
+- in slice, we export one reducer of slice which contain multiple small reducer functions

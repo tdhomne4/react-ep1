@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../public/assets/images/Eatance_Logo.png";
 import style from './style.module.scss';
 import UserContext from "../../../utils/UserContext";
+import { useSelector } from "react-redux";
 const Header = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sticky, setSticky] = useState("");
 
   const {loggedInUser} = useContext(UserContext);
+
+  //get store items for cart
+  const cartItems = useSelector((store) => store.cart.items);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -59,7 +63,7 @@ const Header = (props) => {
                 <Link to="/products" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Products</Link>
               </li>
               <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
-                <Link to="/grocery" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Grocery</Link>
+                <Link to="/cart" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">Cart - ({cartItems.length})</Link>
               </li>
               <li className="mt-[10px] max-md:mt-5 max-md:flex-auto max-md:w-full max-md:border-b">
                 <Link to="/" className="text-black capitalize px-6 pb-5 text-lg font-semibold leading-tight hover:text-custom-green">{loggedInUser}</Link>

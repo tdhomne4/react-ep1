@@ -3,12 +3,16 @@ import { FiCircle } from "react-icons/fi";
 import "./ResDetails.scss";
 import { CDN_URL } from "../../../utils/constants";
 import Search from "../Home/Search/Search";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../utils/cartSlice";
 
 const ResMenu = ({ resDetailsData }) => {
-
+  console.log(resDetailsData);
   const [openAccordions, setOpenAccordions] = useState(Array(resDetailsData?.length).fill(false));
   const [searchInput, setSearchInput] = useState("");
   const [filterResMenus, setFilterResMenus] = useState(resDetailsData.slice(1));
+
+  const dispatch = useDispatch();
 
   const toggleAccordion = (index) => {
     setOpenAccordions((prevOpenAccordions) =>
@@ -36,6 +40,11 @@ const ResMenu = ({ resDetailsData }) => {
     setFilterResMenus(filteredData);
   };
 
+  //cart add item
+  const handleAddItem = (item) => {
+    //Dispatch addItem action
+    dispatch(addItem(item));
+  }
   return (
     <>
       <div className="res_menus_container">
@@ -49,6 +58,7 @@ const ResMenu = ({ resDetailsData }) => {
                   <h3 className="menu_name">{res?.card?.card?.title} <span>({res?.card?.card?.itemCards?.length})</span></h3>
                   <span>{openAccordions[index] ? "-" : "+"}</span>
                 </button>
+              </div>
                 {openAccordions[index] ? (
                   res?.card?.card?.itemCards?.length > 0 ? (
                     res.card.card.itemCards.map((menu, menuIndex) => (
@@ -77,7 +87,11 @@ const ResMenu = ({ resDetailsData }) => {
                           </div>
                           <div className="menu_img_sec">
                             <div className="absolute">
-                              <button className="p-2 text-white bg-black shadow-lg m-auto rounded-lg mx-10 bottom-0">Add +</button>
+                              <button className="p-2 text-white bg-black shadow-lg m-auto rounded-lg mx-10 bottom-0"
+                                  onClick={ () => handleAddItem(menu.card.info)}
+                                >
+                                  Add +
+                                </button>
                             </div>
                             <img src={CDN_URL + menu.card.info.imageId} alt="" />
                           </div>
@@ -90,7 +104,7 @@ const ResMenu = ({ resDetailsData }) => {
                 ) : (
                   ""
                 )}
-              </div>
+             
               <div className="res_menu_divider"></div>
             </div>
           ))

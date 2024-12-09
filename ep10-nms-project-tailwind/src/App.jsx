@@ -1,4 +1,4 @@
-import React, {lazy,Suspense,useState, useEffect} from "react";
+import React, {lazy,useState, useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes , createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom';
 import Layout from "./components/Layout/Layout"
@@ -6,12 +6,15 @@ import Home from "./components/Pages/Home/Home";
 import About from "./components/Pages/About/About";
 import Contact from "./components/Pages/Contact/Contact";
 import PageNotFound from "./components/Layout/PageNotFound";
+import Cart from "./components/Pages/Cart/Cart";
 import Footer from "./components/Layout/Footer/Footer";
 import ResDetails from "./components/Pages/ResDetails/ResDetails";
 //import Grocery from "./components/Grocery/Grocery"; //don't import like this to make seperate bundle. import in lazy
 import UserContext from "./utils/UserContext.js";
+import {Provider} from "react-redux";
+import appStore from "./utils/appStore.js";
 
-const Grocery = lazy(() => import("./components/Grocery/Grocery"))
+const Cart = lazy(() => import("./components/Pages/Cart/Cart"))
 const App = () => {
   const [userName, setUserName] = useState('');
 
@@ -23,13 +26,15 @@ const App = () => {
   },[]);
 
   return (
-    <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
-    <div className="container">
-      <Layout />
-      <Outlet />
-      {/* <Footer /> */}
-    </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser : userName, setUserName}}>
+      <div className="container">
+        <Layout />
+        <Outlet />
+        {/* <Footer /> */}
+      </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 const appRouter = createBrowserRouter([
@@ -54,8 +59,8 @@ const appRouter = createBrowserRouter([
         element : <ResDetails />
       },
       {
-        path : "/grocery",
-        element : <Suspense fallback={<p>Loading....</p>}><Grocery /></Suspense>
+        path : "/cart",
+        element : <Cart />
       },
     ],
     errorElement : <PageNotFound />
