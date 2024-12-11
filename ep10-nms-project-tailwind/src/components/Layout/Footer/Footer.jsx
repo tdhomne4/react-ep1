@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../../../public/assets/images/Eatance_Logo.png";
+import Logo from "../../../../public/assets/images/logo.png";
 import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 const Footer = () => {

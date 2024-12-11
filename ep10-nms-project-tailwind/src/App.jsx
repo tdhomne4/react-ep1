@@ -6,7 +6,7 @@ import Home from "./components/Pages/Home/Home";
 import About from "./components/Pages/About/About";
 import Contact from "./components/Pages/Contact/Contact";
 import PageNotFound from "./components/Layout/PageNotFound";
-import Cart from "./components/Pages/Cart/Cart";
+// import Cart from "./components/Pages/Cart/Cart";
 import Footer from "./components/Layout/Footer/Footer";
 import ResDetails from "./components/Pages/ResDetails/ResDetails";
 //import Grocery from "./components/Grocery/Grocery"; //don't import like this to make seperate bundle. import in lazy

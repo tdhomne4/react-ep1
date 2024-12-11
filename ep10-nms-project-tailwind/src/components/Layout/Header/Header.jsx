@@ -1,6 +1,6 @@
 import React, { useState,useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../../public/assets/images/Eatance_Logo.png";
+import Logo from "../../../../public/assets/images/logo.png";
 import style from './style.module.scss';
 import UserContext from "../../../utils/UserContext";
 import { useSelector } from "react-redux";
@@ -34,9 +34,9 @@ const Header = (props) => {
     <div className={`bg-white border-b-0 pt-5 pb-5 ${sticky}`}>
       <div className="flex items-center">
         <div className="flex-auto">
-          <a href="/">
+          <Link to="/">
             <img src={Logo} alt="Eatance_Logo" />
-          </a>
+          </Link>
         </div>
         <div className="header_container_nav">
           {isMenuOpen ? (

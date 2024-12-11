@@ -61,8 +61,40 @@
 - configured the reducers to our app store
 - to get store data, useSelector (redux hook)
 
+========================================================================================
 **Interview quantion : 
 - subscribe right portion of store like cart items not the whole store and then extract items its wrong and less efficient
 - because store update when any changes happened in it.
 - in appStore, we have big Reducer which contain small reducers of slice.
 - in slice, we export one reducer of slice which contain multiple small reducer functions
+
+
+========================================================================================
+**Test Cases : 
+- write code which test the full application functionality. 
+
+**Types of Testing (developer) : 
+	- Unit Testing => Test the small component isolately
+	- Integration Testing => test the component integration, component talk to each other while perform soma functionality
+	- End To End Testing => Test when user start (login) the application till leave the application (logout), whole flow of user functionality, it use tool for test like selenium etc
+
+*****React Testing Library***
+	- create-react-app have react-testing-Library already in it., in parcel we need to integrate it
+	- RTL uses Jest for testing - it delightfull JS testing framework with a focus of simplicity.
+	- npm i -D @testing-library/react
+	- npm i -D jest
+	- we are using jest along with Babel so need to install some depedencies (npm install --save-dev jest babel-jest @babel/preset-env @babel/preset-react react-test-renderer)
+	- To configure babel, create babel.config.js and add code
+	- parcel uses Babel behind the scene
+	- Configure Parcel Config file to disable Babel default transpilation (means it use babel.config.js configuration)
+	- Jest configuration (npx jest --init)
+	- Install JS dom if we are using jest version > 28  (npm i -D jest-environment-jsdom)
+
+**********Write Test Cases***********************
+	- create __tests__ folder inside any where which contain test files inside this folder
+	- check test cases (npm run test )
+	- Install npm i -D @babel/preset-react => to make JSX work in test cases
+	- Include @babel/preset-react inside babel config file
+	- toBeInTheDocument for this install (@testing-library/jest-dom)
+	- describe(test cases) => we can group multiple test cases in a group
+	- test()/it()  => same function for test cases
