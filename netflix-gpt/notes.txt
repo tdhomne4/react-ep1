@@ -1,0 +1,62 @@
+****Setup Tailwind CSS****
+- npm install -D tailwindcss
+- npx tailwindcss init
+- npx tailwindcss -i ./src/index.css -o ./src/output.css --watch
+===============================================================================
+
+***TMDB Movies API***
+API Access Token : eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTBhMmJiYWU2ZDUxNTYzNmVlNTMxY2Q5NTZlMzI0YSIsIm5iZiI6MTczNDAwMDk1My44MjcwMDAxLCJzdWIiOiI2NzVhYzEzOWE3YWJjYzM4ZDEzODNlNjUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.famFcBOUNyjE32HcWagLPKbXIblHTLt_arRYDb-YR0Q
+API Key : 0a0a2bbae6d515636ee531cd956e324a
+
+Popular Movies:
+https://api.themoviedb.org/3/movie/popular
+
+Popular TV Shows:
+https://api.themoviedb.org/3/tv/popular
+
+Top-Rated Movies:
+https://api.themoviedb.org/3/movie/top_rated
+
+Top-Rated TV Shows:
+https://api.themoviedb.org/3/tv/top_rated
+
+Discover Movies (filtered by criteria):
+https://api.themoviedb.org/3/discover/movie
+
+Discover TV Shows (filtered by criteria):
+https://api.themoviedb.org/3/discover/tv
+
+================================================================================
+
+#Features 
+- Login/Sign Up
+	- Sign In / Sign Up Form
+	- redirect to Browse Page
+-Browser (after authentication)
+	- Header
+	- Main Movie
+		- Trailer In Background
+		- title and Description
+		- Movie Suggestions
+			- MovieList * N 
+
+- NetflixGPT 
+	- Search Bar 
+	- Movie Suggestions
+	
+
+=====================================================================================
+####### useRef Hook##################
+ - The useRef Hook allows you to persist values between renders.
+ - It can be used to store a mutable value that does not cause a re-render when updated.
+ - It can be used to access a DOM element directly.
+
+ =====================================================================================
+
+ - For authentication,
+ backend use Google Firebase
+ - create app in Firebase
+ - configure and install Firebase
+ - use Firebase function and APi for sign in and sign Up 
+ - create redux store and add signup/signin user to redux store
+ - to add user to store, used onAuthStateChanged Firebase api in body/ center of app
