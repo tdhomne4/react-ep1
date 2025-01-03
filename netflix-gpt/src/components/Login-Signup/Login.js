@@ -1,26 +1,28 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { auth } from "../../utils/firebase";
 import { checkFormValidate } from "../../utils/validateform";
 
-import { Header } from "../Layout/Header";
+import { PUBLIC_IMAGE_PATH } from "../../utils/constants";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
 
+import { Header } from "../Layout/Header";
+
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+
+  const loginBGImage = PUBLIC_IMAGE_PATH + "netflix-login-bg.jpg";
 
   const toggleSignIn = () => {
     setIsSignIn(!isSignIn);
@@ -50,7 +52,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: nameValue,
-            photoURL: "/assets/images/user-avatar.jpg",
+            photoURL: PUBLIC_IMAGE_PATH + "user-avatar.jpg",
           })
             .then(() => {
               // Profile updated!
@@ -63,7 +65,6 @@ const Login = () => {
                   photoURL: photoURL,
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMsg(error.code + "-" + error.message);
@@ -72,7 +73,6 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorMessage);
           setErrorMsg(errorCode + "-" + errorMessage);
         });
     } else {
@@ -80,7 +80,6 @@ const Login = () => {
       signInWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
           const user = userCredential.user;
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -96,7 +95,7 @@ const Login = () => {
       <div
         className="h-screen w-screen bg-cover bg-center flex items-center justify-center"
         style={{
-          backgroundImage: "url('/assets/images/netflix-login-bg.jpg')",
+          backgroundImage: "url(" + loginBGImage + ")",
         }}
       >
         {/* Overlay */}

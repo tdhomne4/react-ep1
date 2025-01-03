@@ -5,6 +5,9 @@
 ===============================================================================
 
 ***TMDB Movies API***
+Login details :
+username : tejaswinidhomne
+password : Teju@1234
 API Access Token : eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTBhMmJiYWU2ZDUxNTYzNmVlNTMxY2Q5NTZlMzI0YSIsIm5iZiI6MTczNDAwMDk1My44MjcwMDAxLCJzdWIiOiI2NzVhYzEzOWE3YWJjYzM4ZDEzODNlNjUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.famFcBOUNyjE32HcWagLPKbXIblHTLt_arRYDb-YR0Q
 API Key : 0a0a2bbae6d515636ee531cd956e324a
 
@@ -60,3 +63,10 @@ https://api.themoviedb.org/3/discover/tv
  - use Firebase function and APi for sign in and sign Up 
  - create redux store and add signup/signin user to redux store
  - to add user to store, used onAuthStateChanged Firebase api in body/ center of app
+ - addign "unsubscribe" to onAuthStateChanged because to remove listener when its invoked.
+
+ =====================================================================================
+
+##why useEffect API call make two times : 
+- because of React.StrictMode in index.js, it will only happened only in local, not on production build.
+- its good as it show there is no inconsistency in app.

@@ -1,21 +1,48 @@
-import React, { useState } from "react";
-import { signOut } from "firebase/auth";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { auth } from "../../utils/firebase";
-import { removeUser } from "../../utils/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
+
+import { PUBLIC_IMAGE_PATH } from "../../utils/constants";
+import { auth } from "../../utils/firebase";
+import { addUser, removeUser } from "../../utils/userSlice";
 export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  //on user state changes dispatch add user action to store in redux store
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUser({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        // User is signed out
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
         dispatch(removeUser());
       })
       .catch((error) => {
@@ -29,7 +56,7 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-4">
             <img
-              src="/assets/images/tmdb-logo.png"
+              src={PUBLIC_IMAGE_PATH + "tmdb-logo.png"}
               alt="Netflix Logo"
               className="w-24 cursor-pointer"
             />
@@ -83,7 +110,9 @@ export const Header = () => {
               {/* User Profile */}
               <div className="relative">
                 <img
-                  src={user ? user.photoURL : "/assets/images/user-avatar.jpg"}
+                  src={
+                    user ? user.photoURL : PUBLIC_IMAGE_PATH + "user-avatar.jpg"
+                  }
                   alt="User Avatar"
                   className="w-8 h-8 rounded cursor-pointer"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
